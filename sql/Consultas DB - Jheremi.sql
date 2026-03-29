@@ -1,5 +1,3 @@
-USE baberapi;
-
 /*Consultas Simples*/
 
 -- 1. Obtener catálogo completo de servicios ordenado por precio de menor a mayor
