@@ -22,3 +22,5 @@ VALUES
 ('2026-04-15 11:30:00', 'Pendiente', 2, 5), -- Camilo reserva un Combo corte + barba
 ('2026-04-16 17:00:00', 'Completada', 3, 3), -- Sophie reserva un corte con flequillo(ya completada)
 ('2026-04-18 18:00:00', 'Cancelada', 4, 4); -- Miribelen reserva un corte nube
+
+
