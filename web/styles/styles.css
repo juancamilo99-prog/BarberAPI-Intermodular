@@ -175,3 +175,123 @@ a:hover {
 /* =========================================
    HERO SECTION
 ========================================= */
+
+main .ban-image{
+  background-image: url(/assets/images/banner.webp);
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main .ban-image::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+}
+
+/*sombra final del hero*/
+main .ban-image::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #0b0b0b
+  )
+}
+
+/* Caja del contenido*/
+main .content-text-main{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+/*Caja del contenido de los textos*/
+main .text-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 50%;
+}
+
+/*textos del hero*/
+.text-main h4{
+  color: var(--accent-gold);
+}
+
+.text-main h1{
+  font-size: 6rem;
+}
+
+.text-main h3{
+  text-align: center;
+}
+
+/* Botones reservas y servicios*/
+.btn-hero{
+  display: flex;
+  gap: 20px;
+}
+
+/*resetear los botones*/
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/*caja de reservas*/
+.btn-hero .btn-hero-reservas{
+  border: 2px solid black;
+  width: 250px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-gold);
+  border-radius: var(--border-radius);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/*caja de servicios*/
+.btn-hero .btn-hero-servicios{
+  display: flex;
+  border: 2px solid white;
+  width: 250px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-hero-reservas:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.btn-hero-servicios:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.btn-hero .btn-hero-reservas h4{
+  margin: 0 auto;
+}
+
+.btn-hero .btn-hero-servicios h4{
+  margin: 0 auto;
+}
+
+/* =========================================
+   SERVICES SECTION
+========================================= */
