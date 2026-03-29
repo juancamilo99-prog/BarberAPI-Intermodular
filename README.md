@@ -9,13 +9,19 @@ Este proyecto ha sido desarrollado como práctica de desarrollo web para el proy
 
     BarberAPI/
     │
-    ├── web/        # Archivos de la interfaz web (HTML, CSS, JS)
+    ├── web/                  # Archivos de la interfaz web (HTML, CSS, JS)
     │
-    ├── src/        # Código fuente de la aplicación
+    ├── src/                  # Código fuente de la aplicación
     │
-    ├── docs/       # Documentación del proyecto
+    ├── docs/                 # Documentación del proyecto
+    │   ├── bd/               # Documentación de la base de datos
+    │   │   └── diagramas/    # Diagramas de la base de datos
+    │   │
+    │   └── documentacion/    # Documentos generales del proyecto
     │
-    └── README.md   # Información general del proyecto
+    ├── sql/                  # Scripts SQL (creación de tablas, inserciones, queries)
+    │
+    └── README.md             # Información general del proyecto
     
 -  web/ → Contiene los archivos de la interfaz web del proyecto (HTML, CSS y JavaScript).
 - src/ → Incluye el código fuente principal de la aplicación y la lógica del sistema.
