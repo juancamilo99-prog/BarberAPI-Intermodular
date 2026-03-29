@@ -177,7 +177,7 @@ a:hover {
 ========================================= */
 
 main .ban-image{
-  background-image: url(/assets/images/banner.webp);
+  background-image: url(../assets/images/banner.webp);
   height: 100vh;
   background-position: center;
   background-size: cover;
@@ -274,6 +274,7 @@ button {
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
+/*transicion de las cajas*/
 .btn-hero-reservas:hover{
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
