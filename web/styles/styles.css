@@ -1,0 +1,298 @@
+:root {
+  /* --- Paleta de Colores --- */
+  /* Tonos oscuros de fondo */
+  --bg-dark: #181818;      /* Fondo principal casi negro */
+  --bg-darker: #0d0d0d;    /* Fondo para contrastes (ej. header) */
+  --bg-overlay: rgba(0, 0, 0, 0.75); /* Oscurecer imagen de fondo */
+  
+  /* Textos */
+  --text-main: #ffffff;      /* Blanco para títulos y textos principales */
+  --text-muted: #c0c0c0;     /* Gris claro para párrafos/subtítulos */
+  
+  /* Acentos (el tono dorado/mostaza para los botones) */
+  --accent-gold: #e5b945;
+  --accent-gold-hover: #d2a433; /* Un tono un poco más oscuro para el hover */
+
+  /* --- Tipografía --- */
+  /* Epilogue para títulos */
+  --font-heading: 'Epilogue', 'Manrope', sans-serif; 
+  /* Manrope para el cuerpo */
+  --font-body: 'Manrope', 'Epilogue', sans-serif;
+
+  /* --- Espaciados Básicos --- */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* --- Otros --- */
+  --border-radius: 4px;
+  --transition-fast: 0.3s ease;
+}
+
+/* =========================================
+   RESETEO BASE Y ESTILOS GLOBALES
+========================================= */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Títulos con mucho peso, caja alta (mayúsculas) para parecerse a THE MODERN ATELIER */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-gold);
+}
+
+/* Header*/
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+
+  /* Estado por defecto para navegadores sin soporte de scroll animation */
+  background-color: rgba(0, 0, 0, 0.964);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 40px;
+  
+  /* Magia moderna: Scroll-driven Animations */
+  animation: scroll-header linear forwards;
+  animation-timeline: scroll();
+  animation-range: 0 100px; /* Cambia a lo largo de los primeros 100px de scroll */
+}
+
+
+/*Animacion de scroll*/
+@keyframes scroll-header {
+  0% {
+    background-color: transparent;
+    padding: 20px 40px;
+    border-bottom: 1px solid transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    box-shadow: 0 4px 30px transparent;
+  }
+  100% {
+    background-color: rgba(13, 13, 13, 0.85);
+    padding: 10px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/*Logo*/
+.brand-logo a {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-decoration: none;
+}
+
+.brand-logo img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain; /* Evita que el logo se deforme */
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.brand-logo img:hover {
+  filter: drop-shadow(0px 6px 15px rgba(229, 185, 69, 0.5)) brightness(1.1);
+}
+
+.brand-text {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  background: linear-gradient(45deg, var(--accent-gold), #f9d976, var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--accent-gold); /* Color Dorado que resalta*/
+  filter: drop-shadow(0px 4px 10px rgba(229, 185, 69, 0.3));
+  transition: all var(--transition-fast);
+}
+
+.brand-text:hover {
+  filter: drop-shadow(0px 6px 15px rgba(229, 185, 69, 0.5)) brightness(1.1);
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-lg);
+}
+
+.nav a {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.nav a:hover {
+  color: var(--accent-gold);
+}
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+main .ban-image{
+  background-image: url(../assets/images/banner.webp);
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main .ban-image::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-overlay);
+}
+
+/*sombra final del hero*/
+main .ban-image::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #0b0b0b
+  )
+}
+
+/* Caja del contenido*/
+main .content-text-main{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+/*Caja del contenido de los textos*/
+main .text-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 50%;
+}
+
+/*textos del hero*/
+.text-main h4{
+  color: var(--accent-gold);
+}
+
+.text-main h1{
+  font-size: 6rem;
+}
+
+.text-main h3{
+  text-align: center;
+}
+
+/* Botones reservas y servicios*/
+.btn-hero{
+  display: flex;
+  gap: 20px;
+}
+
+/*resetear los botones*/
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/*caja de reservas*/
+.btn-hero .btn-hero-reservas{
+  border: 2px solid black;
+  width: 250px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-gold);
+  border-radius: var(--border-radius);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/*caja de servicios*/
+.btn-hero .btn-hero-servicios{
+  display: flex;
+  border: 2px solid white;
+  width: 250px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/*transicion de las cajas*/
+.btn-hero-reservas:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.btn-hero-servicios:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.btn-hero .btn-hero-reservas h4{
+  margin: 0 auto;
+}
+
+.btn-hero .btn-hero-servicios h4{
+  margin: 0 auto;
+}
+
+/* =========================================
+   SERVICES SECTION
+========================================= */
