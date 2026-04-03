@@ -217,6 +217,7 @@ main .content-text-main{
   justify-content: center;
   height: 100%;
 }
+
 /*Caja del contenido de los textos*/
 main .text-main{
   display: flex;
@@ -413,6 +414,150 @@ button {
   font-size: 0.8rem;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+/* =========================================
+   RESERVAS
+========================================= */
+.reservas{
+  padding: 6rem 10% 0;
+  background-color: var(--bg-dark);
+  display: flex;
+  align-items: baseline;
+}
+
+.title-reservas{
+  text-align: center;
+  padding: 0;
+}
+
+.reservas-content{
+  display: flex;
+  gap: 4rem;
+  justify-content: space-evenly;
+  padding: 0px 6rem 10%;
+}
+
+.calendario{
+  background-color: #272727;
+  border-radius: var(--border-radius);
+  width: 40%;
+  height: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-radius: var(--border-radius);
+  padding: 42px 48px 46px;
+}
+
+.calendario-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.calendar-title{
+  font-size: 1.8rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.calendario-nav{
+  display: flex;
+  gap: 1rem;
+}
+
+.calendario-nav button{
+  padding: 0.5rem 1rem;
+  background-color: #333333;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+.calendario-nav button:hover{
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.semana, .dias{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.3rem;
+}
+.semana{
+  margin-bottom: 30px;
+}
+.semana div{
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.dias{
+  row-gap: 2px;
+}
+.dia{
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.muted{
+  color: #3f3f44;
+}
+
+.dia span{
+  position: relative;
+  z-index: 1;
+}
+
+.dia:hover{
+  background: var(--accent-gold-hover);
+}
+
+/* CAJAS DE DIAS DISPONIBLES */
+.tablas-reservas{
+  width: 40%;
+  gap: 4rem;
+}
+.box-dias-disponibles{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333333;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 0.90rem;
+  letter-spacing: 1px;
+  width: 200px;
+  height: 50px;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.box:hover{
+  background-color: var(--accent-gold);
+  color: #000;
 }
 
 /* =========================================
