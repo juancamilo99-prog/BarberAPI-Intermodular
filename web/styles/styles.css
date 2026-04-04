@@ -134,6 +134,7 @@ a:hover {
 }
 
 /*Texto del logo*/
+/*Texto del logo*/
 .brand-text {
   font-family: var(--font-heading);
   text-transform: uppercase;
@@ -149,6 +150,7 @@ a:hover {
   filter: drop-shadow(0px 4px 10px rgba(229, 185, 69, 0.3));
   transition: all var(--transition-fast);
 }
+/*Transicion del texto del logo*/
 /*Transicion del texto del logo*/
 .brand-text:hover {
   filter: drop-shadow(0px 6px 15px rgba(229, 185, 69, 0.5)) brightness(1.1);
@@ -172,9 +174,32 @@ a:hover {
   color: var(--accent-gold);
 }
 
+/* Menu movil toggle */
+.menu-checkbox {
+  display: none;
+}
 
-/* =========================================
-   HERO SECTION
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: color var(--transition-fast);
+  z-index: 1500;
+}
+
+.menu-toggle:hover {
+  color: var(--accent-gold);
+}
+
+.menu-toggle .material-symbols-outlined {
+  font-size: 2.5rem;
+}
+
+.menu-toggle .icon-close {
+  display: none;
+}
+
+/*HERO SECTION
 ========================================= */
 
 main .ban-image{
@@ -203,6 +228,7 @@ main .ban-image::after{
   background: linear-gradient(
     to bottom,
     transparent,
+    #000000
     #000000
   )
 }
@@ -246,11 +272,13 @@ main .text-main{
 }
 
 /*Resetear los botones*/
+/*Resetear los botones*/
 button {
   all: unset;
   cursor: pointer;
 }
 
+/*Box de reservas*/
 /*Box de reservas*/
 .btn-hero .btn-hero-reservas{
   border: 2px solid black;
@@ -265,6 +293,7 @@ button {
 }
 
 /*Box de servicios*/
+/*Box de servicios*/
 .btn-hero .btn-hero-servicios{
   display: flex;
   border: 2px solid white;
@@ -276,6 +305,7 @@ button {
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
+/*Transicion de las cajas*/
 /*Transicion de las cajas*/
 .btn-hero-reservas:hover{
   transform: translateY(-3px);
@@ -526,6 +556,24 @@ button {
   background: var(--accent-gold-hover);
 }
 
+/*Flecha anterior*/
+.calendario-nav button::before{
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+}
+
+/*Flecha siguiente*/
+.calendario-nav button[aria-label="Siguiente"]::before {
+  transform: rotate(225deg);
+}
+
+
+
 /* CAJAS DE DIAS DISPONIBLES */
 .tablas-reservas{
   width: 40%;
@@ -611,6 +659,57 @@ button {
 }
 
 @media (max-width: 767px) {
+  /* Barra de navegacion RESPONSIVE */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hace visible el icono de cerrar - Hamburguesa*/
+  #mobile-menu-toggle:checked ~ .menu-toggle .icon-menu {
+    display: none;
+  }
+
+  /* Hace visible el icono de cerrar - X*/
+  #mobile-menu-toggle:checked ~ .menu-toggle .icon-close {
+    display: block;
+  }
+
+  /* Menu desplegable de navegación con transparencia*/
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60vw;
+    height: 100vh;
+    background-color: rgba(13, 13, 13, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.4s ease-in-out;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1400;
+  }
+
+  /*Menu desplegable de navegación con transparencia*/
+  #mobile-menu-toggle:checked ~ .nav {
+    right: 0;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .nav a {
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+  }
+
   .reservas-content{
     display: flex;
     flex-direction: column;
@@ -636,6 +735,7 @@ button {
   }
 }
 
+/* Media queries para Tablets*/
 @media (min-width: 768px) and (max-width: 1024px) {
   .reservas-content{
     display: flex;
@@ -652,6 +752,7 @@ button {
   }
 }
 
+/* Media queries para ordenadores*/
 @media (min-width: 1025px) and (max-width: 1500px){
   .reservas-content{
     display: flex;
@@ -669,7 +770,251 @@ button {
 
 /* =========================================
    FOOTER
+   SECCIÓN SERVICIOS
 ========================================= */
+
+.servicios {
+  padding: 6rem 10%;
+  background-color: var(--bg-dark);
+}
+
+.servicios-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.servicios-title {
+  flex: 0 0 auto;
+  max-width: 500px;
+  padding-right: 2rem;
+}
+
+.servicios-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.servicios-title p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/*Linea de servicios*/
+.servicios-line {
+  flex: 1 1 auto;
+  height: 1px;
+  background-color: rgba(144, 142, 142, 0.572);
+}
+
+/*Grid de servicios*/
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+/*Caja de servicios*/
+.servicio-card {
+  background-color: #272727;
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px);
+  background-color: #2d2d2d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.servicio-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+/*Categoria del servicio*/
+.servicio-category {
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.servicio-icon {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.1);
+  transition: color var(--transition-fast);
+}
+
+.servicio-card:hover .servicio-icon {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.servicio-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.servicio-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  flex-grow: 1;
+}
+
+.servicio-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.servicio-price {
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.servicio-duration {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.main-footer {
+  background-color: #1a1a1a;
+  padding: 6rem 10% 2rem;
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Separador */
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.footer-desc {
+  line-height: 1.8;
+  max-width: 300px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.footer-heading {
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 1.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.links-col ul {
+  list-style: none;
+}
+
+.links-col li {
+  margin-bottom: 1.2rem;
+}
+
+.links-col a {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color var(--transition-fast);
+  color: #a0a0a0;
+}
+
+.links-col a:hover {
+  color: var(--accent-gold);
+}
+
+/* Newsletter */
+.newsletter-desc {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.newsletter-form {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.newsletter-form input {
+  padding: 1rem 1.2rem;
+  background-color: #0d0d0d;
+  border: 1px solid #333;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.newsletter-form input:focus {
+  border-color: var(--accent-gold);
+}
+
+.newsletter-form button {
+  padding: 1rem 1.5rem;
+  background-color: #333333;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.newsletter-form button:hover {
+  background-color: var(--accent-gold);
+  color: #000;
+}
+
+/* Boton Registro Newsletter*/
+.footer-bottom {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-bottom p {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .main-footer {
   background-color: #1a1a1a;
