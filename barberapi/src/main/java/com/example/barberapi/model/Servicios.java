@@ -11,7 +11,19 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Servicios {
 
-    private String nombre_servicio,descripcion;
+    private int idServicio;
+    private String nombreServicio,descripcion;
     private double precio;
-    private int duracion_minutos;
+    private int duracionMinutos;
+
+    @Override
+    public String toString() {
+        return "Servicios{" +
+                "idServicio=" + idServicio +
+                ", nombreServicio='" + nombreServicio + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", duracionMinutos=" + duracionMinutos +
+                '}';
+    }
 }
