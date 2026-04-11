@@ -13,6 +13,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Reservas {
 
-    private LocalDateTime fecha_y_hora;
+    private int idReserva;
+    private LocalDateTime fechaYHora;
     private String estado;
+
+    @Override
+    public String toString() {
+        return "Reservas{" +
+                "idReserva=" + idReserva +
+                ", fechaYHora=" + fechaYHora +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
 }
