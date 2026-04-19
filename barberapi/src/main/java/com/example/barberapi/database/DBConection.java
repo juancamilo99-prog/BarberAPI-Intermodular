@@ -12,8 +12,13 @@ public class DBConection {
 
     public static Connection getConnection(){
 
-        if ( connection == null){
-            createConnection();
+        // Si es nula O si alguien la cerró (isClosed), la volvemos a crear
+        try {
+            if (connection == null || connection.isClosed()) {
+                createConnection();
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al comprobar estado de conexión DB: " + e.getMessage());
         }
 
         return connection;

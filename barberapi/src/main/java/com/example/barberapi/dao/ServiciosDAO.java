@@ -1,12 +1,10 @@
 package com.example.barberapi.dao;
 
 import com.example.barberapi.database.DBConection;
+import com.example.barberapi.model.Clientes;
 import com.example.barberapi.model.Servicios;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,4 +45,5 @@ public class ServiciosDAO {
 
         return listaServicios;
     }
+
 }
