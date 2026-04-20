@@ -630,6 +630,31 @@ button {
   font-weight: 800;
 }
 
+.box-formulario{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.box-formulario label{
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.box-formulario input{
+  padding: 0.5rem;
+  background-color: #333333;
+  border: 1px solid #333;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
 
 .total-price{
   color: var(--accent-gold);
