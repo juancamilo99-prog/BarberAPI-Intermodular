@@ -655,6 +655,15 @@ button {
   transition: border-color var(--transition-fast);
 }
 
+#idServicio{
+  padding: 0.5rem;
+  background-color: #333333;
+  border: 1px solid #333;
+  color: #ffffff;
+  width: 100%;
+  outline: none;
+}
+
 
 .total-price{
   color: var(--accent-gold);
@@ -667,10 +676,11 @@ button {
   padding: 10px;
 }
 
+
 .box-pago{
   background-color: var(--accent-gold);
+  margin-top: 1rem;
   width: 100%;
-  padding: 2rem;
   color: #000;
   cursor: pointer;
   transition: all 0.3s ease;
