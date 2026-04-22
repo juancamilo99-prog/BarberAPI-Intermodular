@@ -1,6 +1,7 @@
 package com.example.barberapi.dao;
 
 import com.example.barberapi.database.DBConection;
+import com.example.barberapi.database.SchemDB;
 import com.example.barberapi.model.Reservas;
 
 import java.sql.*;
@@ -12,7 +13,10 @@ public class ReservasDAO {
     //Creación de una nueva Reserva
     public boolean crearReserva(Reservas reserva){
         // Query de creación de reservas -> ? nos permite acceder a los valores de la tabla reservas.
-        String sql = "INSERT INTO reservas (fecha_y_hora, estado, id_cliente, id_servicio) VALUES (?, ?, ?, ?)";
+        String sql = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
+                SchemDB.TAB_RESERVAS,
+                SchemDB.COL_FECHA_HORA, SchemDB.COL_ESTADO, SchemDB.COL_ID_CLIENTE, SchemDB.COL_ID_SERVICO
+                );
 
         try(Connection connection = DBConection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql)){
@@ -39,7 +43,7 @@ public class ReservasDAO {
     //Lectura de todas las reservas realizadas
     public List<Reservas> obtenerTodasReservas(){
         List<Reservas> listaReservas = new ArrayList<>();
-        String sql = "SELECT * FROM reservas";
+        String sql = String.format("SELECT * FROM %s", SchemDB.TAB_RESERVAS);
 
         try(Connection connection = DBConection.getConnection();
             Statement statement = connection.createStatement();
@@ -66,7 +70,8 @@ public class ReservasDAO {
 
     //Actualizar estado de reservas
     public boolean actualizarEstadoReservas(int idReserva, String nuevoEstado){
-        String sql = "UPDATE reservas SET estado = ? WHERE id_reserva = ?";
+        String sql = String.format("UPDATE %s SET %s = ? WHERE %s = ?", SchemDB.TAB_RESERVAS, SchemDB.COL_ESTADO, SchemDB.COL_ID_RESERVA
+        );
 
         try(Connection connection = DBConection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql)){
@@ -88,7 +93,7 @@ public class ReservasDAO {
     //Eliminación de una reserva
     public boolean eliminarReserva(int idReserva){
         // Query eliminación de reserva
-        String sql = "DELETE FROM reservas WHERE id_reserva = ?";
+        String sql = String.format("DELETE FROM %s WHERE %s", SchemDB.TAB_RESERVAS,  SchemDB.COL_ID_RESERVA);
 
         try(Connection connection = DBConection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

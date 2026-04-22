@@ -1,6 +1,8 @@
 package com.example.barberapi.dao;
 
 import com.example.barberapi.database.DBConection;
+import com.example.barberapi.database.SchemDB;
+import com.example.barberapi.database.SchemDBServices;
 import com.example.barberapi.model.Clientes;
 import com.example.barberapi.model.Servicios;
 
@@ -16,7 +18,7 @@ public class ServiciosDAO {
     public List<Servicios> obtenerTodosServicios(){
 
         List<Servicios> listaServicios = new ArrayList<>();
-        String sql = "SELECT * FROM servicios"; // -> Devuelve todos los elementos de la tabla servicios
+        String sql = String.format("SELECT * FROM  %s", SchemDBServices.TABLE_SERVICIOS); // -> Devuelve todos los elementos de la tabla servicios
 
         try(Connection connection = DBConection.getConnection();
             Statement statement = connection.createStatement();

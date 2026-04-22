@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Servicios {
 
-    private int idServicio;
+    private long idServicio;
     private String nombreServicio,descripcion;
     private double precio;
     private int duracionMinutos;

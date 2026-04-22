@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @Getter
 public class Clientes {
-    private int idCliente;
+    private long idCliente;
     private String nombre, apellido, correo, telefono;
 
     @Override

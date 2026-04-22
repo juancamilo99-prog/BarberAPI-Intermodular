@@ -1,6 +1,7 @@
 package com.example.barberapi.dao;
 
 import com.example.barberapi.database.DBConection;
+import com.example.barberapi.database.SchemDBClientes;
 import com.example.barberapi.model.Clientes;
 
 import java.sql.Connection;
@@ -11,7 +12,9 @@ public class ClientesDAO {
 
     //Operación Crear
     public boolean insertarClientes(Clientes cliente){
-        String sql = "INSERT INTO clientes (nombre, apellido, correo, telefono) VALUES (?, ?, ?, ?)";
+        String sql = String.format("INSERT INTO %S (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
+                SchemDBClientes.TABLE_CLIENTE,
+                SchemDBClientes.COL_NOMBRE, SchemDBClientes.COL_APELLIDO, SchemDBClientes.COL_CORREO, SchemDBClientes.COL_TELEFONO);
 
         try(Connection connection = DBConection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql)){
