@@ -308,7 +308,7 @@
 
                     <div class="caja box-servicio">
                         <span>Selecciona tu servicio:</span>
-                        <select class="select-servicio" name="idServicio" id="idServicio" required>
+                        <select name="idServicio" id="idServicio" required>
                             <option value=""  >-- Elige un servicio --</option>
                             <!-- Creamos variable serv -> devuelve los servicios de la base de datos -->
                             <option th:each="serv : ${servicio}"
