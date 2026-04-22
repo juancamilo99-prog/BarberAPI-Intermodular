@@ -311,9 +311,9 @@
                         <select name="idServicio" id="idServicio" required>
                             <option value=""  >-- Elige un servicio --</option>
                             <!-- Creamos variable serv -> devuelve los servicios de la base de datos -->
-                            <option th:each="serv : ${servicio}"
-                                    th:value="$serv.idServicio"
-                                    th:text="${serv.nombreServicio} + ' - ' + ${serv.precio} + '€'">
+                            <option th:each="serv : ${servicios}"
+                                    th:value="${serv.idServicio}"
+                                    th:text="${serv.nombreServicio + ' - ' + serv.precio + '€'}">
                             </option>
                         </select>
                     </div>
