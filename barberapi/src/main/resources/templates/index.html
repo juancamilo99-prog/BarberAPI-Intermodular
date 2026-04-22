@@ -214,10 +214,10 @@
     <div class="reservas-content">
         <div class="calendario">
             <div class="calendario-header">
-                <h2 class="calendar-title">MAYO, 2026</h2>
+                <h2 class="calendar-title" id="titulo-mes">MAYO, 2026</h2>
                 <div class="calendario-nav">
-                    <button aria-label="Anterior"></button>
-                    <button aria-label="Siguiente"></button>
+                    <button aria-label="Anterior" id="btn-prev"></button>
+                    <button aria-label="Siguiente" id="btn-next"></button>
                 </div>
             </div>
             <div class="semana">
@@ -229,43 +229,7 @@
                 <div>SABADO</div>
                 <div>DOMINGO</div>
             </div>
-            <div class="dias">
-                <div class="dia muted"><span>27</span></div>
-                <div class="dia muted"><span>28</span></div>
-                <div class="dia muted"><span>29</span></div>
-                <div class="dia muted"><span>30</span></div>
-                <div class="dia muted"><span>1</span></div>
-                <div class="dia"><span>2</span></div>
-                <div class="dia muted"><span>3</span></div>
-
-                <div class="dia"><span>4</span></div>
-                <div class="dia selected"><span>5</span></div>
-                <div class="dia"><span>6</span></div>
-                <div class="dia"><span>7</span></div>
-                <div class="dia"><span>8</span></div>
-                <div class="dia"><span>9</span></div>
-                <div class="dia muted"><span>10</span></div>
-                <div class="dia"><span>11</span></div>
-                <div class="dia"><span>12</span></div>
-                <div class="dia"><span>13</span></div>
-                <div class="dia"><span>14</span></div>
-                <div class="dia"><span>15</span></div>
-                <div class="dia"><span>16</span></div>
-                <div class="dia muted"><span>17</span></div>
-                <div class="dia"><span>18</span></div>
-                <div class="dia"><span>19</span></div>
-                <div class="dia"><span>20</span></div>
-                <div class="dia"><span>21</span></div>
-                <div class="dia"><span>22</span></div>
-                <div class="dia"><span>23</span></div>
-                <div class="dia muted"><span>24</span></div>
-                <div class="dia"><span>25</span></div>
-                <div class="dia"><span>26</span></div>
-                <div class="dia"><span>27</span></div>
-                <div class="dia"><span>28</span></div>
-                <div class="dia"><span>29</span></div>
-                <div class="dia"><span>30</span></div>
-                <div class="dia muted"><span>31</span></div>
+            <div class="dias" id="contenedor-dias">
             </div>
         </div>
         <!-- RESERVAS DISPONIBLES -->
@@ -274,16 +238,16 @@
                 <h3>Dias Disponibles - MAYO, 2026</h3>
             </div>
             <div class="box-dias-disponibles">
-                <div class="box">9:00 AM</div>
-                <div class="box">10:00 AM</div>
-                <div class="box">11:00 AM</div>
-                <div class="box">12:00 PM</div>
-                <div class="box">1:00 PM</div>
-                <div class="box">2:00 PM</div>
-                <div class="box">3:00 PM</div>
-                <div class="box">4:00 PM</div>
-                <div class="box">5:00 PM</div>
-                <div class="box">6:00 PM</div>
+                <div class="box time-slot">9:00 AM</div>
+                <div class="box time-slot">10:00 AM</div>
+                <div class="box time-slot">11:00 AM</div>
+                <div class="box time-slot">12:00 PM</div>
+                <div class="box time-slot">1:00 PM</div>
+                <div class="box time-slot">2:00 PM</div>
+                <div class="box time-slot">3:00 PM</div>
+                <div class="box time-slot">4:00 PM</div>
+                <div class="box time-slot">5:00 PM</div>
+                <div class="box time-slot">6:00 PM</div>
             </div>
             <div class="contenedor-tabla-compra">
                 <div class="box-title">REALIZA TU RESERVA</div>
