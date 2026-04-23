@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputFechaHoraOculto = document.querySelector('#fechaHora');
     const tituloMes = document.querySelector('#titulo-mes');
     const contenedorDias = document.querySelector('#contenedor-dias');
-    const horas = document.querySelectorAll(".time-slot");
+    const horas = document.querySelectorAll('.time-slot');
+    const tituloHorasDisponibles = document.querySelector('#titulo-horas-disponibles');
 
     //LOGICA DE FECHAS
     const nombreMeses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
@@ -19,6 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const renderizarCalendario = (mes, anyo) => {
         //Actualizamos mes
         tituloMes.textContent = `${nombreMeses[mes]}, ${anyo}`;
+        contenedorDias.innerHTML = "";
+
+        //Actualiza el título de las horas
+        tituloHorasDisponibles.textContent = `DIAS DISPONIBLES - ${nombreMeses[mes]}, ${anyo}`;
         contenedorDias.innerHTML = "";
 
         //Cálculo de días
@@ -58,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 1; i <= celdasRestantes; i++) {
             htmlDias += `<div class="dia muted"><span>${i}</span></div>`;
         }
+
 
         //Se agrega la logica al HTML
         contenedorDias.innerHTML = htmlDias;
