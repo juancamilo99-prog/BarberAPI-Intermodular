@@ -10,33 +10,31 @@ import java.util.List;
 
 public class ReservasDAO {
 
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+
+    public ReservasDAO(){
+        connection = DBConection.getConnection();
+    }
+
     //Creación de una nueva Reserva
-    public boolean crearReserva(Reservas reserva){
+    public boolean crearReserva(Reservas reserva) throws SQLException {
         // Query de creación de reservas -> ? nos permite acceder a los valores de la tabla reservas.
         String sql = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
                 SchemDB.TAB_RESERVAS,
                 SchemDB.COL_FECHA_HORA, SchemDB.COL_ESTADO, SchemDB.COL_ID_CLIENTE, SchemDB.COL_ID_SERVICO
                 );
 
-        try(Connection connection = DBConection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-
             //getFechaYHora devuelve un LocalDateTime de JAVA
             //Sustituimos  ? por los valores reales de la tabla reservas.
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setTimestamp(1, Timestamp.valueOf(reserva.getFechaYHora()));
             preparedStatement.setString(2, reserva.getEstado());
-            preparedStatement.setInt(3, reserva.getIdCliente());
-            preparedStatement.setInt(4, reserva.getIdServicio());
+            preparedStatement.setLong(3, reserva.getIdCliente());
+            preparedStatement.setLong(4, reserva.getIdServicio());
 
-            //Filas afectadas
-            int filasAfectadas = preparedStatement.executeUpdate();
-            //Si es mayor de 0, se inserto correctamente
-            return filasAfectadas > 0;
-
-        }catch (SQLException e){
-            System.out.println("Error al crear la reserva: " + e.getMessage());
-            return false;
-        }
+            return preparedStatement.execute();
     }
 
 

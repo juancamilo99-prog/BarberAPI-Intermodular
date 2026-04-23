@@ -6,34 +6,42 @@ import com.example.barberapi.model.Clientes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ClientesDAO {
 
+    private Connection conexion;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+
+    public ClientesDAO(){
+        conexion = DBConection.getConnection();
+    }
+
     //Operación Crear
-    public boolean insertarClientes(Clientes cliente){
+    public long insertarClientes(Clientes cliente) throws SQLException{
+        long idGeneradoCliente = 0;
         String sql = String.format("INSERT INTO %S (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
                 SchemDBClientes.TABLE_CLIENTE,
                 SchemDBClientes.COL_NOMBRE, SchemDBClientes.COL_APELLIDO, SchemDBClientes.COL_CORREO, SchemDBClientes.COL_TELEFONO);
 
-        try(Connection connection = DBConection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-
             //Reemplazamos los "?" por los valores de la DB
+            preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setString(1, cliente.getNombre());
             preparedStatement.setString(2, cliente.getApellido());
             preparedStatement.setString(3, cliente.getCorreo());
             preparedStatement.setString(4, cliente.getTelefono());
 
-            //Variable para controlar las filas actualizadas
             int filasAfectadas = preparedStatement.executeUpdate();
-
-            //Si es mayor de 0, se inserto correctamente
-            return filasAfectadas > 0;
-
-        }catch (SQLException e){
-            System.out.println("Error al insertar cliente: " + e.getMessage());
-            return false;
-        }
+            resultSet = preparedStatement.getGeneratedKeys();
+            if(resultSet.next()){
+                idGeneradoCliente = resultSet.getLong(1);
+            }
+            System.out.println(filasAfectadas);
+            preparedStatement.close();
+            resultSet.close();
+            conexion.close();
+            return idGeneradoCliente;
     }
 }

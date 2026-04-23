@@ -16,7 +16,7 @@ public class Reservas {
     private long idReserva;
     private LocalDateTime fechaYHora;
     private String estado;
-    private int idCliente, idServicio;
+    private long idCliente, idServicio;
 
     @Override
     public String toString() {
