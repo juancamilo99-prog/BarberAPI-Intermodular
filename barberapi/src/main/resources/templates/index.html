@@ -161,6 +161,8 @@
             <div class="contenedor-tabla-compra">
                 <div class="box-title">REALIZA TU RESERVA</div>
                 <!-- Cambio de div a Form para capturar los datos registrados por el cliente-->
+                <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+                <p th:if="${mensaje}" th:text="${mensaje}" style="color:green;"></p>
                 <form th:action="@{/crear-reserva}" method="POST" id="form-reserva">
                     <div class="box-formulario">
                         <label for="nombre">Nombre:</label>
@@ -170,13 +172,13 @@
                         <input type="text" id="apellido" name="apellido" required />
 
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required />
+                        <input type="email" id="email" name="correo" required />
 
                         <label for="telefono">Teléfono:</label>
                         <input type="tel" id="telefono" name="telefono" required />
 
                         <!-- Capturamos fecha y hora -->
-                        <input type="hidden" id="fechaHora" name="fechaHora" required />
+                        <input type="hidden" id="fechaYHora" name="fechaYHora" required />
                     </div>
 
                     <div class="caja box-servicio">
