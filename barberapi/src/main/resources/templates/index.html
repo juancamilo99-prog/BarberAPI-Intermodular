@@ -19,6 +19,7 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
             rel="stylesheet"
     />
+    <script th:src="@{js/app.js}" defer></script>
 </head>
 <body>
 <!-- Cabecera -->
@@ -100,102 +101,10 @@
                 </div>
             </article>
 
-           <!-- Card 2 -->
-<!--            <article class="servicio-card">-->
-<!--                <div class="servicio-card-top">-->
-<!--                    <span class="servicio-category">02 / NEW STYLE</span>-->
-<!--                    <span class="material-symbols-outlined service-icon"-->
-<!--                    >architecture</span-->
-<!--                    >-->
-<!--                </div>-->
-<!--                <h3 class="servicio-title">CORTE NEW STYLE URBAN</h3>-->
-<!--                <p class="servicio-desc">-->
-<!--                    Corte de pelo con degradado moderno y acabado con navaja. High-->
-<!--                    Fade, Low Fade, Mid Fade, etc. Incluye lavado premium y acabado de-->
-<!--                    peinado.-->
-<!--                </p>-->
-<!--                <div class="servicio-card-bottom">-->
-<!--                    <span class="servicio-price">19.99€</span>-->
-<!--                    <span class="servicio-duration">30 MIN</span>-->
-<!--                </div>-->
-<!--            </article>-->
-
-<!--            &lt;!&ndash; Card 3 &ndash;&gt;-->
-<!--            <article class="servicio-card">-->
-<!--                <div class="servicio-card-top">-->
-<!--                    <span class="servicio-category">03 / RITUAL</span>-->
-<!--                    <span class="material-symbols-outlined service-icon">spa</span>-->
-<!--                </div>-->
-<!--                <h3 class="servicio-title">CORTE FLEQUILLO - MUJER</h3>-->
-<!--                <p class="servicio-desc">-->
-<!--                    Corte recto que a manera de fleco dejar caer sobre frente.Incluye-->
-<!--                    lavado premium y acabado de peinado.-->
-<!--                </p>-->
-<!--                <div class="servicio-card-bottom">-->
-<!--                    <span class="servicio-price">24.99€</span>-->
-<!--                    <span class="servicio-duration">40 MIN</span>-->
-<!--                </div>-->
-<!--            </article>-->
-
-<!--            &lt;!&ndash; Card 4 &ndash;&gt;-->
-<!--            <article class="servicio-card">-->
-<!--                <div class="servicio-card-top">-->
-<!--                    <span class="servicio-category">04 / ANTHEM</span>-->
-<!--                    <span class="material-symbols-outlined service-icon"-->
-<!--                    >content_cut</span-->
-<!--                    >-->
-<!--                </div>-->
-<!--                <h3 class="servicio-title">CORTE NUBE - MUJER</h3>-->
-<!--                <p class="servicio-desc">-->
-<!--                    Corte para cabello rizado, ligero y difuso. Incluye tratamiento-->
-<!--                    hidratante y peinado.-->
-<!--                </p>-->
-<!--                <div class="servicio-card-bottom">-->
-<!--                    <span class="servicio-price">29.99€</span>-->
-<!--                    <span class="servicio-duration">60 MIN</span>-->
-<!--                </div>-->
-<!--            </article>-->
-
-<!--            &lt;!&ndash; Card 5 &ndash;&gt;-->
-<!--            <article class="servicio-card">-->
-<!--                <div class="servicio-card-top">-->
-<!--                    <span class="servicio-category">05 / COMBINATION</span>-->
-<!--                    <span class="material-symbols-outlined service-icon"-->
-<!--                    >content_cut</span-->
-<!--                    >-->
-<!--                </div>-->
-<!--                <h3 class="servicio-title">COMBO ONE</h3>-->
-<!--                <p class="servicio-desc">-->
-<!--                    Combo de corte de pelo tradicional más barba. Un corte de pelo-->
-<!--                    tradicional además de un arreglo de barba. Incluye lavado premium-->
-<!--                    y acabado de peinado.-->
-<!--                </p>-->
-<!--                <div class="servicio-card-bottom">-->
-<!--                    <span class="servicio-price">24.99€</span>-->
-<!--                    <span class="servicio-duration">40 MIN</span>-->
-<!--                </div>-->
-<!--            </article>-->
-
-<!--            &lt;!&ndash; Card 6 &ndash;&gt;-->
-<!--            <article class="servicio-card">-->
-<!--                <div class="servicio-card-top">-->
-<!--                    <span class="servicio-category">06 / TENDENCIES</span>-->
-<!--                    <span class="material-symbols-outlined service-icon">spa</span>-->
-<!--                </div>-->
-<!--                <h3 class="servicio-title">CORTE BRO FLOW</h3>-->
-<!--                <p class="servicio-desc">-->
-<!--                    Corte medio, capeado, con caída natural. Perfecto para quienes-->
-<!--                    quieren ese look surfero, sin necesidad de tocar la playa.-->
-<!--                </p>-->
-<!--                <div class="servicio-card-bottom">-->
-<!--                    <span class="servicio-price">19.99€</span>-->
-<!--                    <span class="servicio-duration">30 MIN</span>-->
-<!--                </div>-->
-<!--            </article>*/-->
         </div>
     </section>
 
-    <!-- Seccion de la reservas -->
+    <!-- Seccion de las reservas -->
     <section class="reservas" id="reservas">
         <!-- TITULOS DE SERVICIOS -->
         <div class="servicios-line"></div>
@@ -238,16 +147,16 @@
                 <h3>Dias Disponibles - MAYO, 2026</h3>
             </div>
             <div class="box-dias-disponibles">
-                <div class="box time-slot">9:00 AM</div>
-                <div class="box time-slot">10:00 AM</div>
-                <div class="box time-slot">11:00 AM</div>
-                <div class="box time-slot">12:00 PM</div>
-                <div class="box time-slot">1:00 PM</div>
-                <div class="box time-slot">2:00 PM</div>
-                <div class="box time-slot">3:00 PM</div>
-                <div class="box time-slot">4:00 PM</div>
-                <div class="box time-slot">5:00 PM</div>
-                <div class="box time-slot">6:00 PM</div>
+                <div class="box time-slot" data-hora="09:00:00">9:00 AM</div>
+                <div class="box time-slot" data-hora="10:00:00">10:00 AM</div>
+                <div class="box time-slot" data-hora="11:00:00">11:00 AM</div>
+                <div class="box time-slot" data-hora="12:00:00">12:00 PM</div>
+                <div class="box time-slot" data-hora="13:00:00">13:00 PM</div>
+                <div class="box time-slot" data-hora="14:00:00">14:00 PM</div>
+                <div class="box time-slot" data-hora="15:00:00">15:00 PM</div>
+                <div class="box time-slot" data-hora="16:00:00">16:00 PM</div>
+                <div class="box time-slot" data-hora="17:00:00">17:00 PM</div>
+                <div class="box time-slot" data-hora="18:00:00">18:00 PM</div>
             </div>
             <div class="contenedor-tabla-compra">
                 <div class="box-title">REALIZA TU RESERVA</div>
