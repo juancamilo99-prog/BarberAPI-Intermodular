@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 public class WebController {
 
     @GetMapping("/")
-    public String mostrarInicio(Model model){
+    public String mostrarInicio(Model model) {
         //Instanciamos DAO y obtenemos los datos reales de MySQL
         ServiciosDAO serviciosDAO = new ServiciosDAO();
         List<Servicios> listaServicios = serviciosDAO.obtenerTodosServicios();
@@ -41,7 +42,7 @@ public class WebController {
             @RequestParam("telefono") String telefono,
             @RequestParam("fechaYHora") String fechaYHora,
             @RequestParam("idServicio") long idServicio,
-            Model model){
+            RedirectAttributes redirectAttributes) { // -> Guarda el mensaje por un segundo y luego lo elimina para que no vuelva a salir
 
         ServiciosDAO serviciosDAO = new ServiciosDAO();
 
@@ -53,7 +54,7 @@ public class WebController {
             clientes.setApellido(apellido);
             clientes.setCorreo(correo);
             clientes.setTelefono(telefono);
-            System.out.println("cliente creado: "+clientes.getNombre());
+            System.out.println("cliente creado: " + clientes.getNombre());
 
             ClientesController clientesController = new ClientesController();
             long idClienteGenerado = clientesController.addClientes(clientes);
@@ -69,13 +70,15 @@ public class WebController {
             ReservasDAO reservasDAO = new ReservasDAO();
             reservasDAO.crearReserva(reservas);
 
-            model.addAttribute("mensaje", "Reserva guardada correctamente");
-            model.addAttribute("servicios", serviciosDAO.obtenerTodosServicios());
-            return "index";
+            //  CAMBIOS AQUÍ (Flash Attributes)
+            redirectAttributes.addFlashAttribute("mensaje", "Reserva guardada correctamente");
+            // Redirigimos a la raíz y anclamos en la sección reservas
+            //No necesitamos pasar la lista de los servicios, ya que redirect: pasará primero por @GetMapping("/"), que se encargará de buscar los servicios y enviarlos al HTML
+            return "redirect:/#reservas";
+
         } catch (Exception e) {
-            model.addAttribute("Error", e.getMessage());
-            model.addAttribute("servicios", serviciosDAO.obtenerTodosServicios());
-            return "index";
+            redirectAttributes.addFlashAttribute("Error", e.getMessage());
+            return "redirect:/#reservas";
         }
 
     }

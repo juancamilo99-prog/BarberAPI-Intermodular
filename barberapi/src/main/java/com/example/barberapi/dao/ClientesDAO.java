@@ -4,10 +4,7 @@ import com.example.barberapi.database.DBConection;
 import com.example.barberapi.database.SchemDBClientes;
 import com.example.barberapi.model.Clientes;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ClientesDAO {
 
@@ -27,7 +24,7 @@ public class ClientesDAO {
                 SchemDBClientes.COL_NOMBRE, SchemDBClientes.COL_APELLIDO, SchemDBClientes.COL_CORREO, SchemDBClientes.COL_TELEFONO);
 
             //Reemplazamos los "?" por los valores de la DB
-            preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, cliente.getNombre());
             preparedStatement.setString(2, cliente.getApellido());
             preparedStatement.setString(3, cliente.getCorreo());

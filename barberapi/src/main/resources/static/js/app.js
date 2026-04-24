@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //VARIABLES GLOBALES
     let fechaSeleccionada = null;
     let horaSeleccionada = null;
-    const inputFechaHoraOculto = document.querySelector('#fechaHora');
+    const inputFechaHoraOculto = document.querySelector('#fechaYHora');
     const tituloMes = document.querySelector('#titulo-mes');
     const contenedorDias = document.querySelector('#contenedor-dias');
     const horas = document.querySelectorAll('.time-slot');
