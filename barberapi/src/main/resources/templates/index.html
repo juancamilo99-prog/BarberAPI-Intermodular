@@ -132,7 +132,7 @@
             <div class="semana">
                 <div>LUNES</div>
                 <div>MARTES</div>
-                <div>MIERCOLES</div>
+                <div>MIÉRCOLES</div>
                 <div>JUEVES</div>
                 <div>VIERNES</div>
                 <div>SABADO</div>
@@ -144,7 +144,7 @@
         <!-- RESERVAS DISPONIBLES -->
         <div class="tablas-reservas">
             <div class="reservas-title">
-                <h3>Dias Disponibles - MAYO, 2026</h3>
+                <h3 id="titulo-horas-disponibles"></h3>
             </div>
             <div class="box-dias-disponibles">
                 <div class="box time-slot" data-hora="09:00:00">9:00 AM</div>
@@ -161,8 +161,11 @@
             <div class="contenedor-tabla-compra">
                 <div class="box-title">REALIZA TU RESERVA</div>
                 <!-- Cambio de div a Form para capturar los datos registrados por el cliente-->
-                <p th:if="${error}" th:text="${error}" style="color:red;"></p>
-                <p th:if="${mensaje}" th:text="${mensaje}" style="color:green;"></p>
+                <!--  Aviso cartel reserva correcta o incorrecta -->
+                <div class="aviso">
+                    <p th:if="${error}" th:text="${error}" class="aviso-error"></p>
+                    <p th:if="${mensaje}" th:text="${mensaje}" class="aviso-mensaje"></p>
+                </div>
                 <form th:action="@{/crear-reserva}" method="POST" id="form-reserva">
                     <div class="box-formulario">
                         <label for="nombre">Nombre:</label>

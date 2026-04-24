@@ -471,9 +471,12 @@ button {
   background-color: #272727;
   border-radius: var(--border-radius);
   width: 40%;
-  height: 500px;
+
+  /*Modificación calendario aumenta tamñanó según numero de filas calendario*/
+  min-height: 500px; /*Como minimo medirá 500px*/
+  height: max-content; /* Permite que crezca si necesita más espacio (meses de 6 filas) */
+
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-radius: var(--border-radius);
   padding: 42px 48px 46px;
 }
 
@@ -691,6 +694,26 @@ button {
   color: #000;
   transform: scale(1.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.aviso{
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.aviso-error{
+  color: #ff4d4d;
+  background: rgba(255,0,0,0.1);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.aviso-mensaje{
+  color: #00e676;
+  background: rgba(0,255,0,0.1);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 @media (max-width: 767px) {
