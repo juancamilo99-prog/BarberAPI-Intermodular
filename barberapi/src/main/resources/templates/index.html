@@ -66,6 +66,16 @@
 
 </div>
 
+<!-- VENTANA EMERGENTE ERROR EN RESERVA DUPLICADA -->
+
+<div th:if="${Error}" id="modalError" class="modal-error">
+    <div class="modal-content">
+        <h2>¡NO SE PUDO COMPLETAR LA RESERVA!</h2>
+        <p th:text="${Error}"></p>
+        <button onclick="cerrarModalError()">Aceptar</button>
+    </div>
+</div>
+
 
 <!-- Cabecera -->
 <header class="main-header">
@@ -221,7 +231,7 @@
                         <input type="email" id="email" name="correo" required />
 
                         <label for="telefono">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono" required />
+                        <input type="number" id="telefono" name="telefono" required />
 
                         <!-- Capturamos fecha y hora -->
                         <input type="hidden" id="fechaYHora" name="fechaYHora" required />

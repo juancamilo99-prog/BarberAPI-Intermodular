@@ -1205,7 +1205,6 @@ button {
   pointer-events: none; /* Esto evita que el evento de clic se dispare */
 }
 
-<<<<<<< HEAD
 @media (max-width: 600px){
 
     .main-header{
@@ -1293,7 +1292,6 @@ button {
         align-items: center;
     }
 }
-=======
 /* =========================================
    TICKET VENTANA EMERGENTE (RECUPERADO)
 ========================================= */
@@ -1414,4 +1412,64 @@ button {
   .ticket-footer { padding: 0.5rem 1.5rem 1.5rem; }
   .btn-cerrar-ticket { padding: 12px; font-size: 0.9rem; }
 }
->>>>>>> origin/main
+
+/* =========================================
+   TICKET ERROR DE RESERVA
+========================================= */
+
+.modal-error{
+    position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+}
+
+.modal-content{
+    background-color: #1e1e1e;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 12px;
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 185, 69, 0.19);
+      overflow: hidden;
+      animation: aparecerTicket 0.4s ease-out forwards;
+}
+
+.modal-content h2{
+      background-color: var(--accent-gold);
+      color: black;
+      text-align: center;
+      padding: 2rem 1rem;
+}
+
+.modal-content p{
+    text-align: center;
+    padding 2rem 1rem;
+}
+
+.modal-content button{
+    margin-top: 1rem;
+      width: 90%;
+      padding: 15px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+}
+
+.modal-content button:hover{
+    background-color: white;
+      color: #000;
+}

@@ -2,9 +2,12 @@ package com.example.barberapi.dao;
 
 import com.example.barberapi.database.DBConection;
 import com.example.barberapi.database.SchemDB;
+import com.example.barberapi.database.SchemDBClientes;
 import com.example.barberapi.model.Reservas;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +38,36 @@ public class ReservasDAO {
             preparedStatement.setLong(4, reserva.getIdServicio());
 
             return preparedStatement.execute();
+    }
+
+    public boolean existeReservaCliente(String correo, String telefono, LocalDate fechaHora) throws SQLException {
+        String sql = String.format(
+                "SELECT COUNT(*) FROM %s r " +
+                        "INNER JOIN %s c ON r.%s = c.%s " +
+                        "WHERE(c.%s=? OR c.%s=?) " +
+                        "AND DATE(r.%s)=? " +
+                        "AND r.%s <> 'CANCELADA'",
+                SchemDB.TAB_RESERVAS,
+                SchemDBClientes.TABLE_CLIENTE,
+                SchemDB.COL_ID_CLIENTE,
+                SchemDBClientes.COL_ID_CLIENTE,
+                SchemDBClientes.COL_CORREO,
+                SchemDBClientes.COL_TELEFONO,
+                SchemDB.COL_FECHA_HORA,
+                SchemDB.COL_ESTADO
+        );
+
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, correo);
+        preparedStatement.setString(2, telefono);
+        preparedStatement.setDate(3, java.sql.Date.valueOf(fechaHora));
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1) > 0;
+        }
+
+        return false;
     }
 
 
