@@ -79,17 +79,17 @@ public class ReservasDAO {
         String sql = String.format("SELECT * FROM %s", SchemDB.TAB_RESERVAS);
 
         try(Connection connection = DBConection.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql)){
+            PreparedStatement preparedStatement1 = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement1.executeQuery(sql)){
 
             while (resultSet.next()){
                 Reservas reserva = new Reservas();
-                reserva.setIdReserva(resultSet.getInt("id_reserva"));
+                reserva.setIdReserva(resultSet.getLong("id_reserva"));
                 //Pasamos Timestamp SQL a LocalDateTime JAVA
                 reserva.setFechaYHora(resultSet.getTimestamp("fecha_y_hora").toLocalDateTime());
                 reserva.setEstado(resultSet.getString("estado"));
-                reserva.setIdCliente(resultSet.getInt("id_cliente"));
-                reserva.setIdServicio(resultSet.getInt("id_servicio"));
+                reserva.setIdCliente(resultSet.getLong("id_cliente"));
+                reserva.setIdServicio(resultSet.getLong("id_servicio"));
 
                 listaReservas.add(reserva);
             }
