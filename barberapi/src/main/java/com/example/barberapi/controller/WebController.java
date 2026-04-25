@@ -86,8 +86,8 @@ public class WebController {
             reservas.setIdCliente(idClienteGenerado);
             reservas.setIdServicio(idServicio);
 
-            ReservasDAO reservasDAO = new ReservasDAO();
-            reservasDAO.crearReserva(reservas);
+            ReservasController reservasController = new ReservasController();
+            reservasController.addReserva(reservas, correo, telefono);
 
             //Lógica para la ventana emergente confirmación reserva
             String nombreServicioReservado = "";

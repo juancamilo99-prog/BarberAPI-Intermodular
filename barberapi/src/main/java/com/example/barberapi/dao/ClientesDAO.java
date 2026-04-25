@@ -41,4 +41,27 @@ public class ClientesDAO {
             conexion.close();
             return idGeneradoCliente;
     }
+
+    public Clientes buscarCorreo(String correo, String telefono) throws SQLException{
+
+        String sql = String.format("SELECT * FROM %S WHERE %s = ? OR %s = ?", SchemDBClientes.TABLE_CLIENTE,
+                SchemDBClientes.COL_CORREO, SchemDBClientes.COL_TELEFONO);
+
+        preparedStatement = conexion.prepareStatement(sql);
+        preparedStatement.setString(1, correo);
+        preparedStatement.setString(2, telefono);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            Clientes clientes = new Clientes();
+            clientes.setIdCliente(resultSet.getLong(SchemDBClientes.COL_ID_CLIENTE));
+            clientes.setNombre(resultSet.getString(SchemDBClientes.COL_NOMBRE));
+            clientes.setApellido(resultSet.getString(SchemDBClientes.COL_APELLIDO));
+            clientes.setCorreo(resultSet.getString(SchemDBClientes.COL_CORREO));
+            clientes.setTelefono(resultSet.getString(SchemDBClientes.COL_TELEFONO));
+            return clientes;
+        }
+        return null;
+    }
 }

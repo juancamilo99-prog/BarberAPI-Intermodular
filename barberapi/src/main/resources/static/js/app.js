@@ -183,3 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderizarCalendario(mesRender, anioRender);
 
 });
+
+function cerrarModalError(){
+    document.getElementById("modalError").style.display = "none";
+}
