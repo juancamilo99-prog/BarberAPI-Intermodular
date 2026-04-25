@@ -25,19 +25,20 @@ public class DBConection {
     }
 
     private static void createConnection(){
-
-        //Parámetros de Conexión
-        String user = "root";
-        String pass = "root";
-        String database = "barberapi";
-
-        //Creamos Conexión
-
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + database, user, pass);
+            //Parámetros de Conexión
+            String user = System.getenv("DB_USER");
+            String pass = System.getenv("DB_PASS");
+            String database = System.getenv("DB_URL");
+
+            System.out.println("DB_URL: " + database);
+
+            //Creamos Conexión
+            connection = DriverManager.getConnection(database, user, pass);
         } catch (SQLException e) {
             System.out.println("Error: No se pudo establecer conexión con DB");
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Error conectando la BD: " + e.getMessage(), e);
         }
 
     }
