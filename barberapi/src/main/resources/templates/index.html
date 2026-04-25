@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BarberAPI</title>
     <!-- Linkea a los estilos css    -->
-    <link rel="stylesheet" th:href="@{/styles/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/styles.css(v=${#dates.createNow().time})}"/>
     <link
             href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
             rel="stylesheet"
@@ -119,14 +119,12 @@
     <section class="reservas" id="reservas">
         <!-- TITULOS DE SERVICIOS -->
         <div class="servicios-line"></div>
-        <div class="servicios-header">
-            <div class="servicios-title title-reservas">
+        <div class="reservas-header">
                 <h2>RESERVA TU CORTE</h2>
                 <p>
                     Tu look empieza aquí. Reserva tu cita en segundos y disfruta de un
                     servicio pensado para ti.
                 </p>
-            </div>
         </div>
         <div class="servicios-line"></div>
     </section>

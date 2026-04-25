@@ -40,6 +40,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-dark);
@@ -97,7 +98,6 @@ a:hover {
 @keyframes scroll-header {
   0% {
     background-color: transparent;
-    padding: 20px 40px;
     border-bottom: 1px solid transparent;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
@@ -367,7 +367,7 @@ button {
 /*Grid de servicios*/
 .servicios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
 }
 
@@ -449,15 +449,18 @@ button {
    RESERVAS
 ========================================= */
 .reservas{
-  padding: 6rem 10% 0;
+  padding: 30px;
   background-color: var(--bg-dark);
   display: flex;
   align-items: baseline;
 }
 
-.title-reservas{
+.reservas-header{
   text-align: center;
-  padding: 0;
+}
+
+.reservas-header h2{
+  font-size: 2rem;
 }
 
 .reservas-content{
@@ -716,6 +719,91 @@ button {
   border-radius: 5px;
 }
 
+@media (max-width: 600px){
+
+    .main-header{
+        width: 100%;
+        padding: 5px;
+    }
+
+    .content-tex-main{
+        width: 100%;
+    }
+
+    .text-main h1{
+        text-align:center;
+        font-size: 3rem;
+    }
+
+    .text-main h4, h3{
+            text-align:center;
+            font-size: 1rem;
+        }
+
+    .ban-image{
+        height:100%;
+        width:100%;
+    }
+
+    .btn-hero{
+        flex-direction: column;
+    }
+
+    .servicios{
+        padding: 0;
+    }
+
+    .servicios .servicios-title{
+        width: 100%;
+        padding: 0;
+    }
+
+    .servicios-title h2, h3, p{
+        text-align:center;
+    }
+
+    .servicios-grid{
+        justify-content: center;
+        display: grid;
+        grid-template-column: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    .reservas{
+        padding: 5px;
+        width: 100%;
+    }
+
+    .title-reservas h2, p{
+        width: 100%;
+    }
+
+    .reservas-content{
+        padding: 10px;
+    }
+
+    .reservas-header{
+        display:flex;
+        flex-direction: column;
+        text-align:center;
+
+    }
+
+    .calendario{
+        padding: 25px;
+    }
+
+    .time-slot{
+        width: 90%;
+    }
+
+    .box-dias-disponibles{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 @media (max-width: 767px) {
   /* Barra de navegacion RESPONSIVE */
   .menu-toggle {
@@ -734,7 +822,7 @@ button {
 
   /* Menu desplegable de navegación con transparencia*/
   .nav {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: -100%;
     width: 60vw;
