@@ -37,7 +37,9 @@ public class ReservasDAO {
             preparedStatement.setLong(3, reserva.getIdCliente());
             preparedStatement.setLong(4, reserva.getIdServicio());
 
-            return preparedStatement.execute();
+            int filasInsertadas = preparedStatement.executeUpdate();
+
+            return filasInsertadas > 0;
     }
 
     public boolean existeReservaCliente(String correo, String telefono, LocalDate fechaHora) throws SQLException {

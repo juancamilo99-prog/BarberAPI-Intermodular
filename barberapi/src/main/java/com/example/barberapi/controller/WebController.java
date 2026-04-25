@@ -82,7 +82,7 @@ public class WebController {
 
             Reservas reservas = new Reservas();
             reservas.setFechaYHora(LocalDateTime.parse(fechaYHora));
-            reservas.setEstado("PENDIENTE");
+            reservas.setEstado("Pendiente");
             reservas.setIdCliente(idClienteGenerado);
             reservas.setIdServicio(idServicio);
 
