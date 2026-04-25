@@ -1195,3 +1195,13 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+/* Estilo para horas ocupadas */
+.box.time-slot.disabled {
+  background-color: #1a1a1a !important;
+  color: #555 !important;
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  border: 1px solid transparent !important;
+  pointer-events: none; /* Esto evita que el evento de clic se dispare */
+}

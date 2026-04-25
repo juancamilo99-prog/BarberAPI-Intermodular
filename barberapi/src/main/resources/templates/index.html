@@ -19,6 +19,12 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
             rel="stylesheet"
     />
+
+    <!-- Creamos el puente para que pueda leer app.js la variable Global    -->
+    <script th:inline="javascript">
+        globalThis.reservasOcupadas = /*[[${reservasOcupadas}]]*/ [];
+    </script>
+
     <script th:src="@{js/app.js}" defer></script>
 </head>
 <body>

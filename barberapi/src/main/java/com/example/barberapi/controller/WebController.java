@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 //Anotación @Controller nos permite interactuar con el controlador web de nuestra interfaz
@@ -24,11 +26,27 @@ public class WebController {
     @GetMapping("/")
     public String mostrarInicio(Model model) {
         //Instanciamos DAO y obtenemos los datos reales de MySQL
+
+        //Datos de servicios de la DB
         ServiciosDAO serviciosDAO = new ServiciosDAO();
         List<Servicios> listaServicios = serviciosDAO.obtenerTodosServicios();
 
+        //Obtenemos lista de Reservas DB
+        ReservasDAO reservasDAO = new ReservasDAO();
+        List<Reservas> listaReservas =  reservasDAO.obtenerTodasReservas();
+
+        //Creamos una lista solo con las fechas y horas ya ocupadas en formato JAVASCRIPT
+        List<String> reservasOcupadas = new ArrayList<>();
+        DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+
+        //Iteramos la listaReservas
+        for (Reservas reserva : listaReservas){
+            reservasOcupadas.add(reserva.getFechaYHora().format(formatter));
+        }
+
         //Inyectamos la lista en el modelo para el HTML pueda leerlo
         model.addAttribute("servicios", listaServicios);
+        model.addAttribute("reservasOcupadas", reservasOcupadas);
 
         //Spring carga el archivo llamada index.html
         return "index";
