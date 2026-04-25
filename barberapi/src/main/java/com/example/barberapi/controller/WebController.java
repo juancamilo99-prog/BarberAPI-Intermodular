@@ -101,7 +101,7 @@ public class WebController {
             }
 
             //Formateamos la fecha para que se vea Bien en el Ticket Emergente (25/05/2026 a la 13h)
-            DateTimeFormatter formatterTicket = DateTimeFormatter.ofPattern("dd/MM/yyyy 'a las' HH:mm h");
+            DateTimeFormatter formatterTicket = DateTimeFormatter.ofPattern("dd/MM/yyyy 'a las' HH:mm");
             String fechaBonita = LocalDateTime.parse(fechaYHora).format(formatterTicket);
 
 
@@ -109,7 +109,7 @@ public class WebController {
             redirectAttributes.addFlashAttribute("reservaExitosa", true);
             redirectAttributes.addFlashAttribute("ticketNombre", nombre + " " + apellido);
             redirectAttributes.addFlashAttribute("ticketServicio", nombreServicioReservado);
-            redirectAttributes.addFlashAttribute("ticketFecha" + fechaBonita);
+            redirectAttributes.addFlashAttribute("ticketFecha", fechaBonita);
 
             // Redirigimos a la raíz y anclamos en la sección reservas
             //No necesitamos pasar la lista de los servicios, ya que redirect: pasará primero por @GetMapping("/"), que se encargará de buscar los servicios y enviarlos al HTML
@@ -119,6 +119,5 @@ public class WebController {
             redirectAttributes.addFlashAttribute("Error", e.getMessage());
             return "redirect:/#reservas";
         }
-
     }
 }

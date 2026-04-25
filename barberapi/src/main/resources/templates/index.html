@@ -29,8 +29,42 @@
 </head>
 <body>
 <!--Ventana emergente en Reserva Exitosa-->
+<div class="ventana-emergente" th:if="${reservaExitosa}">
+    <div class="ticket-emergente">
+        <div class="ticket-header">
+            <span class="material-symbols-outlined ticket-icon">
+                check_circle
+            </span>
+            <h3>¡RESERVA CONFIRMADA!</h3>
+            <p>Tu cita se ha sido registrada con éxito </p>
+        </div>
 
+        <!--Cuerpo ticket - Detalles del Ticket-->
+        <div class="ticket-body">
+            <div class="ticket-row">
+                <span class="ticket-label">Cliente:</span>
+                <span class="ticket-value" th:text="${ticketNombre}">Jheremi</span>
+            </div>
+            <div class="ticket-row">
+                <span class="ticket-label">Servicio:</span>
+                <span class="ticket-value" th:text="${ticketServicio}">Corte Clásico</span>
+            </div>
+            <div class="ticket-row">
+                <span class="ticket-label">Fecha y Hora:</span>
+                <span class="ticket-value" th:text="${ticketFecha}">25/04/2026 a las 13:00h</span>
+            </div>
+        </div>
 
+        <!-- Cierre del ticket en el footer-ticket  -->
+        <div class="ticket-footer">
+            <button onclick="this.closest('.ventana-emergente').style.display='none'" class="btn-cerrar-ticket">
+                CERRAR TICKET
+            </button>
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- Cabecera -->
@@ -50,9 +84,9 @@
     </label>
     <nav class="nav">
         <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Reservas</a></li>
+            <li><a th:href ="@{/}">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#reservas">Reservas</a></li>
         </ul>
     </nav>
 </header>
