@@ -6,6 +6,7 @@ import com.example.barberapi.dao.ServiciosDAO;
 import com.example.barberapi.model.Clientes;
 import com.example.barberapi.model.Reservas;
 import com.example.barberapi.model.Servicios;
+import org.springframework.expression.spel.ast.Literal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,12 +73,12 @@ public class WebController {
             clientes.setApellido(apellido);
             clientes.setCorreo(correo);
             clientes.setTelefono(telefono);
-            System.out.println("cliente creado: " + clientes.getNombre());
+            System.out.println("Cliente creado: " + clientes.getNombre());
 
             ClientesController clientesController = new ClientesController();
             long idClienteGenerado = clientesController.addClientes(clientes);
 
-            System.out.println("cliente insertado correctamente" + idClienteGenerado);
+            System.out.println("Cliente insertado correctamente: " + idClienteGenerado);
 
             Reservas reservas = new Reservas();
             reservas.setFechaYHora(LocalDateTime.parse(fechaYHora));
@@ -88,8 +89,28 @@ public class WebController {
             ReservasDAO reservasDAO = new ReservasDAO();
             reservasDAO.crearReserva(reservas);
 
-            //  CAMBIOS AQUÍ (Flash Attributes)
-            redirectAttributes.addFlashAttribute("mensaje", "Reserva guardada correctamente");
+            //Lógica para la ventana emergente confirmación reserva
+            String nombreServicioReservado = "";
+
+            //Iteramos en la lista de todos los Servicios
+            for (Servicios servicio : serviciosDAO.obtenerTodosServicios()){
+                if (servicio.getIdServicio() == idServicio){
+                    nombreServicioReservado = servicio.getNombreServicio();
+                    break;
+                }
+            }
+
+            //Formateamos la fecha para que se vea Bien en el Ticket Emergente (25/05/2026 a la 13h)
+            DateTimeFormatter formatterTicket = DateTimeFormatter.ofPattern("dd/MM/yyyy 'a las' HH:mm h");
+            String fechaBonita = LocalDateTime.parse(fechaYHora).format(formatterTicket);
+
+
+            //Enviamos los datos del Ticket recogidos
+            redirectAttributes.addFlashAttribute("reservaExitosa", true);
+            redirectAttributes.addFlashAttribute("ticketNombre", nombre + " " + apellido);
+            redirectAttributes.addFlashAttribute("ticketServicio", nombreServicioReservado);
+            redirectAttributes.addFlashAttribute("ticketFecha" + fechaBonita);
+
             // Redirigimos a la raíz y anclamos en la sección reservas
             //No necesitamos pasar la lista de los servicios, ya que redirect: pasará primero por @GetMapping("/"), que se encargará de buscar los servicios y enviarlos al HTML
             return "redirect:/#reservas";
