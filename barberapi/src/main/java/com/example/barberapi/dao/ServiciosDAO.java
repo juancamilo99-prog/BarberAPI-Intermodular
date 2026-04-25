@@ -21,8 +21,8 @@ public class ServiciosDAO {
         String sql = String.format("SELECT * FROM  %s", SchemDBServices.TABLE_SERVICIOS); // -> Devuelve todos los elementos de la tabla servicios
 
         try(Connection connection = DBConection.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql)){
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery(sql)){
 
             while (resultSet.next()){
 
