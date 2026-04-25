@@ -46,6 +46,7 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 /* Títulos con mucho peso, caja alta (mayúsculas) para parecerse a THE MODERN ATELIER */
@@ -773,6 +774,31 @@ button {
         letter-spacing: 3px;
     }
 
+    /* =========================================
+       ARREGLOS RESPONSIVE DEL BANNER HERO
+    ========================================= */
+    main .text-main {
+        max-width: 90%; /* Dejamos que el texto ocupe casi toda la pantalla */
+    }
+
+    .text-main h1 {
+        font-size: 3.5rem; /* 6rem era demasiado gigante para un móvil */
+    }
+
+    .btn-hero {
+        flex-direction: column; /* Apila los botones verticalmente */
+        width: 100%;
+        align-items: center;
+        gap: 15px; /* Separación vertical entre botones */
+    }
+
+    .btn-hero .btn-hero-reservas,
+    .btn-hero .btn-hero-servicios {
+        width: 90%; /* Para que no rompan la pantalla hacia los lados */
+        max-width: 300px;
+        height: 60px;
+    }
+
     .reservas-content {
         display: flex;
         flex-direction: column;
@@ -1308,7 +1334,7 @@ button {
 }
 
 .btn-cerrar-ticket{
-    width: 100%;
+    width: 90%;
     padding: 15px;
     background-color: #333;
     color: white;
@@ -1316,6 +1342,7 @@ button {
     border-radius: 6px;
     font-weight: bold;
     letter-spacing: 1px;
+    text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -1323,4 +1350,45 @@ button {
 .btn-cerrar-ticket:hover{
     background-color: white;
     color: #000;
+}
+
+/* TICKET RESPONSIVE PARA MÓVILES */
+@media (max-width: 480px) {
+    .ticket-emergente{
+        width: 95%;
+    }
+
+    .ticket-header{
+        padding: 1.5rem 1rem;
+    }
+
+    .ticket-icon{
+        font-size: 3rem !important; /*Icono un poco más pequeño*/
+    }
+
+    .ticket-header h3{
+        font-size: 1.3rem;
+    }
+
+    .ticket-header p{
+        font-size: 0.85rem;
+    }
+
+    .ticket-body{
+        padding: 1.5rem; /* Menos espacio interior en el Body-Ticket*/
+        gap: 10px;
+    }
+
+    .ticket-value{
+        font-size: 1rem; /* Evitamos desbordamientos*/
+    }
+
+    .ticket-footer{
+        padding: 0.5rem 1.5rem 1.5rem;
+    }
+
+    .btn-cerrar-ticket{
+        padding: 12px; /*Boton un poco más fino*/
+        font-size: 0.9rem;
+    }
 }

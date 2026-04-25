@@ -1308,7 +1308,7 @@ button {
 }
 
 .btn-cerrar-ticket{
-    width: 100%;
+    width: 90%;
     padding: 15px;
     background-color: #333;
     color: white;
@@ -1316,6 +1316,7 @@ button {
     border-radius: 6px;
     font-weight: bold;
     letter-spacing: 1px;
+    text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -1323,4 +1324,45 @@ button {
 .btn-cerrar-ticket:hover{
     background-color: white;
     color: #000;
+}
+
+/* TICKET RESPONSIVE PARA MÓVILES */
+@media (max-width: 480px) {
+    .ticket-emergente{
+        width: 95%;
+    }
+
+    .ticket-header{
+        padding: 1.5rem 1rem;
+    }
+
+    .ticket-icon{
+        font-size: 3rem !important; /*Icono un poco más pequeño*/
+    }
+
+    .ticket-header h3{
+        font-size: 1.3rem;
+    }
+
+    .ticket-header p{
+        font-size: 0.85rem;
+    }
+
+    .ticket-body{
+        padding: 1.5rem; /* Menos espacio interior en el Body-Ticket*/
+        gap: 10px;
+    }
+
+    .ticket-value{
+        font-size: 1rem; /* Evitamos desbordamientos*/
+    }
+
+    .ticket-footer{
+        padding: 0.5rem 1.5rem 1.5rem;
+    }
+
+    .btn-cerrar-ticket{
+        padding: 12px; /*Boton un poco más fino*/
+        font-size: 0.9rem;
+    }
 }
