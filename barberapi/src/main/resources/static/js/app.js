@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contenedorDias.innerHTML = "";
 
         //Actualiza el título de las horas
-        tituloHorasDisponibles.textContent = `DIAS DISPONIBLES - ${nombreMeses[mes]}, ${anyo}`;
+        tituloHorasDisponibles.textContent = `HORAS DISPONIBLES - ${nombreMeses[mes]}, ${anyo}`;
         contenedorDias.innerHTML = "";
 
         //Cálculo de días
