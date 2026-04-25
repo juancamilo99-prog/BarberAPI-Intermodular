@@ -471,9 +471,12 @@ button {
   background-color: #272727;
   border-radius: var(--border-radius);
   width: 40%;
-  height: 500px;
+
+  /*Modificación calendario aumenta tamñanó según numero de filas calendario*/
+  min-height: 500px; /*Como minimo medirá 500px*/
+  height: max-content; /* Permite que crezca si necesita más espacio (meses de 6 filas) */
+
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-radius: var(--border-radius);
   padding: 42px 48px 46px;
 }
 
@@ -630,7 +633,6 @@ button {
   font-weight: 800;
 }
 
-
 .box-formulario{
   display: flex;
   flex-direction: column;
@@ -656,6 +658,15 @@ button {
   transition: border-color var(--transition-fast);
 }
 
+#idServicio{
+  padding: 0.5rem;
+  background-color: #333333;
+  border: 1px solid #333;
+  color: #ffffff;
+  width: 100%;
+  outline: none;
+}
+
 
 .total-price{
   color: var(--accent-gold);
@@ -668,10 +679,11 @@ button {
   padding: 10px;
 }
 
+
 .box-pago{
   background-color: var(--accent-gold);
+  margin-top: 1rem;
   width: 100%;
-  padding: 2rem;
   color: #000;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -682,6 +694,26 @@ button {
   color: #000;
   transform: scale(1.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.aviso{
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.aviso-error{
+  color: #ff4d4d;
+  background: rgba(255,0,0,0.1);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.aviso-mensaje{
+  color: #00e676;
+  background: rgba(0,255,0,0.1);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 @media (max-width: 767px) {
@@ -919,6 +951,7 @@ button {
 /* =========================================
    FOOTER
 ========================================= */
+
 .main-footer {
   background-color: #1a1a1a;
   padding: 6rem 10% 2rem;
@@ -1039,4 +1072,136 @@ button {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.main-footer {
+  background-color: #1a1a1a;
+  padding: 6rem 10% 2rem;
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Separador */
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.footer-desc {
+  line-height: 1.8;
+  max-width: 300px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.footer-heading {
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 1.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.links-col ul {
+  list-style: none;
+}
+
+.links-col li {
+  margin-bottom: 1.2rem;
+}
+
+.links-col a {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color var(--transition-fast);
+  color: #a0a0a0;
+}
+
+.links-col a:hover {
+  color: var(--accent-gold);
+}
+
+/* Newsletter */
+.newsletter-desc {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.newsletter-form {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.newsletter-form input {
+  padding: 1rem 1.2rem;
+  background-color: #0d0d0d;
+  border: 1px solid #333;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.newsletter-form input:focus {
+  border-color: var(--accent-gold);
+}
+
+.newsletter-form button {
+  padding: 1rem 1.5rem;
+  background-color: #333333;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.newsletter-form button:hover {
+  background-color: var(--accent-gold);
+  color: #000;
+}
+
+/* Boton Registro Newsletter*/
+.footer-bottom {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-bottom p {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Estilo para horas ocupadas */
+.box.time-slot.disabled {
+  background-color: #1a1a1a !important;
+  color: #555 !important;
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  border: 1px solid transparent !important;
+  pointer-events: none; /* Esto evita que el evento de clic se dispare */
 }
