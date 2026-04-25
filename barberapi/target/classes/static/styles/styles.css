@@ -97,7 +97,6 @@ a:hover {
 @keyframes scroll-header {
   0% {
     background-color: transparent;
-    padding: 20px 40px;
     border-bottom: 1px solid transparent;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
@@ -105,7 +104,6 @@ a:hover {
   }
   100% {
     background-color: rgba(13, 13, 13, 0.85);
-    padding: 10px 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -455,9 +453,10 @@ button {
   align-items: baseline;
 }
 
-.title-reservas{
+.reservas-header{
   text-align: center;
-  padding: 0;
+  width: 50%;
+  padding: 20px 0;
 }
 
 .reservas-content{
@@ -1206,6 +1205,95 @@ button {
   pointer-events: none; /* Esto evita que el evento de clic se dispare */
 }
 
+<<<<<<< HEAD
+@media (max-width: 600px){
+
+    .main-header{
+        width: 100%;
+        padding: 5px;
+    }
+
+    .content-tex-main{
+        width: 100%;
+    }
+
+    .text-main h1{
+        text-align:center;
+        font-size: 3rem;
+        padding: -50px 0;
+    }
+
+    .text-main h4, h3{
+            text-align:center;
+            font-size: 1rem;
+        }
+
+    .ban-image{
+        height:100%;
+        width:100%;
+    }
+
+    .btn-hero{
+        flex-direction: column;
+    }
+
+    .servicios{
+        padding: 0;
+    }
+
+    .servicios .servicios-title{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .servicios-title h2, h3, p{
+        text-align:center;
+    }
+
+    .servicios-grid{
+        justify-content: center;
+        display: grid;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .reservas{
+        padding: 5px;
+        width: 100%;
+    }
+
+    .title-reservas h2, p{
+        width: 100%;
+    }
+
+    .reservas-content{
+        padding: 10px;
+    }
+
+    .reservas-header{
+        display:flex;
+        flex-direction: column;
+        text-align:center;
+        padding: 20px;
+
+    }
+
+    .calendario{
+        padding: 25px;
+    }
+
+    .time-slot{
+        width: 90%;
+    }
+
+    .box-dias-disponibles{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+=======
 /* =========================================
    TICKET VENTANA EMERGENTE (RECUPERADO)
 ========================================= */
@@ -1326,3 +1414,4 @@ button {
   .ticket-footer { padding: 0.5rem 1.5rem 1.5rem; }
   .btn-cerrar-ticket { padding: 12px; font-size: 0.9rem; }
 }
+>>>>>>> origin/main
