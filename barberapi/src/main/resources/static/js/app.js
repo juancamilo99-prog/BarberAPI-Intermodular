@@ -89,6 +89,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.color = "#000";
 
                 fechaSeleccionada = this.dataset.fecha;
+
+                //Bloque de horas ocupadas o ya reservadas
+                horaSeleccionada = null; //Reiniciamos la hora al cambiar de día
+                inputFechaHoraOculto.value = "";
+
+                horas.forEach(hora => {
+                    //Activamos las horas primeramente por si teníamos un día lleno de reservas
+                    hora.classList.remove('disabled');
+                    hora.style.backgroundColor = "#333333";
+                    hora.style.color = "#ffffff";
+                    hora.style.pointerEvents = "auto"; // Aseguramos que sea clicable de base
+
+                    //Comprobamos si la hora especifica ya está reservada
+                    const horaValor = hora.dataset.hora;
+                    const fechaHoraComprobar = `${fechaSeleccionada}T${horaValor}`;
+
+                    // Log para que tú veas en la consola (F12) qué está comparando
+                    console.log("Comprobando:", fechaHoraComprobar);
+
+
+                    if (globalThis.reservasOcupadas.includes(fechaHoraComprobar)) {
+                        console.log("¡OCUPADA!");
+                        hora.classList.add('disabled');
+                        hora.style.backgroundColor = "#1a1a1a"; // Color más oscuro para ocupado
+                        hora.style.color = "#555";
+                        hora.style.pointerEvents = "none"; // BLOQUEO REAL: Impide el clic físico
+                    }
+                })
+
+
+
                 actualizarFormulario();
             });
         });
@@ -96,6 +127,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Evento clic en Horas )
     horas.forEach(hora => {
+
+        //Si la hora tiene la clase 'disabled', se para aquí
+        if (hora.classList.contains('disabled')) return;
+
         hora.addEventListener('click', function() {
             horas.forEach(h => {
                 h.style.backgroundColor = "#333333";
