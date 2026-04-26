@@ -41,7 +41,7 @@ public class ReservasDAO {
                         "INNER JOIN %s c ON r.%s = c.%s " +
                         "WHERE(c.%s=? OR c.%s=?) " +
                         "AND DATE(r.%s)=? " +
-                        "AND r.%s <> 'Pendiente'",
+                        "AND r.%s <> 'Cancelada'",
                 SchemDB.TAB_RESERVAS,
                 SchemDBClientes.TABLE_CLIENTE,
                 SchemDB.COL_ID_CLIENTE,
@@ -59,9 +59,10 @@ public class ReservasDAO {
             preparedStatement.setString(2, telefono);
             preparedStatement.setDate(3, java.sql.Date.valueOf(fechaHora));
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return resultSet.getInt(1) > 0;
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1) > 0;
+                }
             }
         }
         return false;
@@ -75,7 +76,7 @@ public class ReservasDAO {
 
         try(Connection connection = DBConection.getConnection();
             PreparedStatement preparedStatement1 = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement1.executeQuery(sql)){
+            ResultSet resultSet = preparedStatement1.executeQuery()){
 
             while (resultSet.next()){
                 Reservas reserva = new Reservas();
@@ -96,7 +97,7 @@ public class ReservasDAO {
         return listaReservas;
     }
 
-    //Actualizar estado de reservas
+    /*//Actualizar estado de reservas
     public boolean actualizarEstadoReservas(int idReserva, String nuevoEstado){
         String sql = String.format("UPDATE %s SET %s = ? WHERE %s = ?", SchemDB.TAB_RESERVAS, SchemDB.COL_ESTADO, SchemDB.COL_ID_RESERVA
         );
@@ -116,9 +117,9 @@ public class ReservasDAO {
             System.out.println("Error al actualizar la reserva: " + e.getMessage());
             return false;
         }
-    }
+    }*/
 
-    //Eliminación de una reserva
+    /*//Eliminación de una reserva
     public boolean eliminarReserva(int idReserva){
         // Query eliminación de reserva
         String sql = String.format("DELETE FROM %s WHERE %s", SchemDB.TAB_RESERVAS,  SchemDB.COL_ID_RESERVA);
@@ -135,5 +136,5 @@ public class ReservasDAO {
             System.out.println("Error al eliminar la reserva: " + e.getMessage());
             return false;
         }
-    }
+    }*/
 }

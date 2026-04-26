@@ -18,11 +18,12 @@ public class ServiciosDAO {
     public List<Servicios> obtenerTodosServicios(){
 
         List<Servicios> listaServicios = new ArrayList<>();
+
         String sql = String.format("SELECT * FROM  %s", SchemDBServices.TABLE_SERVICIOS); // -> Devuelve todos los elementos de la tabla servicios
 
         try(Connection connection = DBConection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery(sql)){
+            ResultSet resultSet = preparedStatement.executeQuery()){
 
             while (resultSet.next()){
 
