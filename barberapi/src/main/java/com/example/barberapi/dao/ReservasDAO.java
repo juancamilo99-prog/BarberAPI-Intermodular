@@ -75,7 +75,7 @@ public class ReservasDAO {
 
         try(Connection connection = DBConection.getConnection();
             PreparedStatement preparedStatement1 = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement1.executeQuery(sql)){
+            ResultSet resultSet = preparedStatement1.executeQuery()){
 
             while (resultSet.next()){
                 Reservas reserva = new Reservas();
