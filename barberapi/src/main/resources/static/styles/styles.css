@@ -227,7 +227,6 @@ main .ban-image::after{
     to bottom,
     transparent,
     #000000
-    #000000
   )
 }
 
@@ -1451,7 +1450,7 @@ button {
 
 .modal-content p{
     text-align: center;
-    padding 2rem 1rem;
+    padding: 2rem 1rem;
 }
 
 .modal-content button{
