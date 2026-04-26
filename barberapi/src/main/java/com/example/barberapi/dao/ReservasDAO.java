@@ -32,7 +32,6 @@ public class ReservasDAO {
 
                 return preparedStatement.executeUpdate() > 0;
             }
-
     }
 
     public boolean existeReservaCliente(String correo, String telefono, LocalDate fechaHora) throws SQLException {
