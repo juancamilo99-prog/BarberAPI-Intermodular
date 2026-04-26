@@ -13,14 +13,6 @@ import java.util.List;
 
 public class ReservasDAO {
 
-    private Connection connection;
-    private PreparedStatement preparedStatement;
-    private ResultSet resultSet;
-
-    public ReservasDAO(){
-        connection = DBConection.getConnection();
-    }
-
     //Creación de una nueva Reserva
     public boolean crearReserva(Reservas reserva) throws SQLException {
         // Query de creación de reservas -> ? nos permite acceder a los valores de la tabla reservas.
@@ -31,15 +23,16 @@ public class ReservasDAO {
 
             //getFechaYHora devuelve un LocalDateTime de JAVA
             //Sustituimos  ? por los valores reales de la tabla reservas.
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setTimestamp(1, Timestamp.valueOf(reserva.getFechaYHora()));
-            preparedStatement.setString(2, reserva.getEstado());
-            preparedStatement.setLong(3, reserva.getIdCliente());
-            preparedStatement.setLong(4, reserva.getIdServicio());
+            try (Connection connection = DBConection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setTimestamp(1, Timestamp.valueOf(reserva.getFechaYHora()));
+                preparedStatement.setString(2, reserva.getEstado());
+                preparedStatement.setLong(3, reserva.getIdCliente());
+                preparedStatement.setLong(4, reserva.getIdServicio());
 
-            int filasInsertadas = preparedStatement.executeUpdate();
+                return preparedStatement.executeUpdate() > 0;
+            }
 
-            return filasInsertadas > 0;
     }
 
     public boolean existeReservaCliente(String correo, String telefono, LocalDate fechaHora) throws SQLException {
@@ -48,7 +41,7 @@ public class ReservasDAO {
                         "INNER JOIN %s c ON r.%s = c.%s " +
                         "WHERE(c.%s=? OR c.%s=?) " +
                         "AND DATE(r.%s)=? " +
-                        "AND r.%s <> 'CANCELADA'",
+                        "AND r.%s <> 'Pendiente'",
                 SchemDB.TAB_RESERVAS,
                 SchemDBClientes.TABLE_CLIENTE,
                 SchemDB.COL_ID_CLIENTE,
@@ -59,16 +52,18 @@ public class ReservasDAO {
                 SchemDB.COL_ESTADO
         );
 
-        preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, correo);
-        preparedStatement.setString(2, telefono);
-        preparedStatement.setDate(3, java.sql.Date.valueOf(fechaHora));
+        try (Connection connection = DBConection.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-        ResultSet resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            return resultSet.getInt(1) > 0;
+            preparedStatement.setString(1, correo);
+            preparedStatement.setString(2, telefono);
+            preparedStatement.setDate(3, java.sql.Date.valueOf(fechaHora));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
         }
-
         return false;
     }
 
