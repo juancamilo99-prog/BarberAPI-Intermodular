@@ -29,20 +29,21 @@ public class ClientesController {
         if (clientes.getCorreo() == null || clientes.getCorreo().trim().isEmpty()){
             throw new Exception("El correo del cliente es obligatorio");
         }
+        if (!clientes.getCorreo().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
+            System.out.println("correo no valido");
+            throw new Exception("El correo no tiene un formato valido.");
+        }
         try {
             Clientes clienteExistente = clientesDAO.buscarCorreo(clientes.getCorreo(), clientes.getTelefono());
             if (clienteExistente != null){
                 return clienteExistente.getIdCliente();
             }
-            if (!clientes.getCorreo().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
-                System.out.println("correo no valido");
-                throw new Exception("El correo no tiene un formato valido.");
-            }
 
             return clientesDAO.insertarClientes(clientes);
 
         } catch (SQLException e) {
-            throw new Exception("Error al guardar el cliente en la BD");
+            e.printStackTrace();
+            throw new Exception("Error al guardar el cliente en la BD: " + e.getMessage());
         }
 
     }
