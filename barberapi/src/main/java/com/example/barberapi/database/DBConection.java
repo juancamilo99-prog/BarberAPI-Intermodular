@@ -27,9 +27,9 @@ public class DBConection {
     private static void createConnection(){
         try {
             //Parámetros de Conexión
+            String url = System.getenv("DB_URL");
             String user = System.getenv("DB_USER");
             String pass = System.getenv("DB_PASSWORD");
-            String url = System.getenv("DB_URL");
 
 
             //Creamos Conexión
