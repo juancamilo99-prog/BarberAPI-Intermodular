@@ -12,7 +12,7 @@ public class ClientesDAO {
     //Operación Crear
     public long insertarClientes(Clientes cliente) throws SQLException{
         long idGeneradoCliente = 0;
-        String sql = String.format("INSERT INTO %S (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
+        String sql = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
                 SchemDBClientes.TABLE_CLIENTE,
                 SchemDBClientes.COL_NOMBRE, SchemDBClientes.COL_APELLIDO, SchemDBClientes.COL_CORREO, SchemDBClientes.COL_TELEFONO);
 
@@ -36,7 +36,7 @@ public class ClientesDAO {
 
     public Clientes buscarCorreo(String correo, String telefono) throws SQLException{
 
-        String sql = String.format("SELECT * FROM %S WHERE %s = ? OR %s = ?", SchemDBClientes.TABLE_CLIENTE,
+        String sql = String.format("SELECT * FROM %s WHERE %s = ? OR %s = ?", SchemDBClientes.TABLE_CLIENTE,
                 SchemDBClientes.COL_CORREO, SchemDBClientes.COL_TELEFONO);
 
         try(Connection conexion = DBConection.getConnection();
