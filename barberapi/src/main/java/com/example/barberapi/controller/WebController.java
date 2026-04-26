@@ -86,9 +86,12 @@ public class WebController {
             reservas.setIdCliente(idClienteGenerado);
             reservas.setIdServicio(idServicio);
 
+            System.out.println("Reserva preparada: " + reservas);
+
             ReservasController reservasController = new ReservasController();
             reservasController.addReserva(reservas, correo, telefono);
 
+            System.out.println("Reserva insertada correctamente");
             //Lógica para la ventana emergente confirmación reserva
             String nombreServicioReservado = "";
 
@@ -116,6 +119,7 @@ public class WebController {
             return "redirect:/#reservas";
 
         } catch (Exception e) {
+            e.printStackTrace();
             redirectAttributes.addFlashAttribute("Error", e.getMessage());
             return "redirect:/#reservas";
         }
