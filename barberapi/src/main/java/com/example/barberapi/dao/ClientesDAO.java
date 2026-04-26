@@ -30,15 +30,11 @@ public class ClientesDAO {
             preparedStatement.setString(3, cliente.getCorreo());
             preparedStatement.setString(4, cliente.getTelefono());
 
-            int filasAfectadas = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
             resultSet = preparedStatement.getGeneratedKeys();
             if(resultSet.next()){
                 idGeneradoCliente = resultSet.getLong(1);
             }
-            System.out.println(filasAfectadas);
-            preparedStatement.close();
-            resultSet.close();
-            conexion.close();
             return idGeneradoCliente;
     }
 
